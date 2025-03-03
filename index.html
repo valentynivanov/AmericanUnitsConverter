@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Unit converter</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <div class="block">
+            <div class="container">
+                <h1>Unit converter</h1>
+                <div class="input-group">
+                    <label for="lbs">How many pounds lbs?</label>
+                    <input 
+                    type="text"
+                    placeholder="20"
+                    name="lbs"
+                    id="lbs"
+                    >
+                </div>
+                <div class="input-group">
+                    <label for="inch">How many inches?</label>
+                    <input 
+                    type="text"
+                    placeholder="20"
+                    name="inch"
+                    id="inch"
+                    >
+                </div>
+                <p id='error'>Please enter valid number</p>
+                <button id='convert-btn'class="btn">Convert</button>
+            </div>
+            <div id="results">
+            </div>
+            <div>
+                <button id='calculate-btn' class="btn">Summarise</button>
+            </div>
+            <div id='calculation'>
+            </div>
+                <button id='final-btn' class="btn">Grand Total</button>
+            <div id='final'>
+            </div>
+        </div>
+        <script type="module" src="/app.js"></script>
+    </body>
+</html>
