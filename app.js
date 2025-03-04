@@ -35,6 +35,7 @@ convertBtn.addEventListener('click', function(){
     }
     
     // Check if entered values are integers and positive
+    // Math.ceil() to round Up to the nearest whole number 
     if(isNaN(lbs) && isNaN(inches)){
         errorMessage.style.display = 'block';
         return;
@@ -58,7 +59,7 @@ convertBtn.addEventListener('click', function(){
         errorMessage.style.display = 'none';
         content = `
             <div class='div-result'>
-                <p>${Math.ceil(lbs)} lbs = ${Math.ceil(lbs * 0.45359237)} kg. </p>  // Math.ceil() to round Up to the nearest whole number 
+                <p>${Math.ceil(lbs)} lbs = ${Math.ceil(lbs * 0.45359237)} kg. </p>  
                 <p>${Math.ceil(inches)} inches = ${Math.ceil(inches*2.54)} cm. </p>
             </div>
         
