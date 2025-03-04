@@ -42,7 +42,7 @@ convertBtn.addEventListener('click', function(){
         errorMessage.style.display = 'block';
         content = `
             <div class='div-result'>
-                <p>${inches} inches = ${(inches*2.54).toFixed(2)} cm. </p>
+                <p>${Math.ceil(inches)} inches = ${Math.ceil(inches*2.54)} cm. </p>
             </div>
         
         `
@@ -50,7 +50,7 @@ convertBtn.addEventListener('click', function(){
         errorMessage.style.display = 'block';
         content = `
             <div class='div-result'>
-                <p>${lbs} lbs = ${Math.ceil(lbs * 0.45359237)} kg. </p>
+                <p>${Math.ceil(lbs)} lbs = ${Math.ceil(lbs * 0.45359237)} kg. </p>
             </div>
         
         `
@@ -58,8 +58,8 @@ convertBtn.addEventListener('click', function(){
         errorMessage.style.display = 'none';
         content = `
             <div class='div-result'>
-                <p>${lbs} lbs = ${Math.ceil(lbs * 0.45359237)} kg. </p>
-                <p>${inches} inches = ${(inches*2.54).toFixed(2)} cm. </p>
+                <p>${Math.ceil(lbs)} lbs = ${Math.ceil(lbs * 0.45359237)} kg. </p>  // Math.ceil() to round Up to the nearest whole number 
+                <p>${Math.ceil(inches)} inches = ${Math.ceil(inches*2.54)} cm. </p>
             </div>
         
         `
@@ -68,7 +68,7 @@ convertBtn.addEventListener('click', function(){
         return;
     }
     storeLbs.push(Math.ceil(lbs * 0.45359237));
-    storeInches.push((inches *2.54));
+    storeInches.push(Math.ceil(inches *2.54));
     
     console.log(storeLbs)
     console.log(storeInches)
