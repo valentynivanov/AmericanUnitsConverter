@@ -40,7 +40,6 @@ convertBtn.addEventListener('click', function(){
         errorMessage.style.display = 'block';
         return;
     }else if (isNaN(lbs) || lbs < 0 && inches>=0){
-        errorMessage.style.display = 'block';
         content = `
             <div class='div-result'>
                 <p>${Math.ceil(inches)} inches = ${Math.ceil(inches*2.54)} cm. </p>
@@ -48,7 +47,6 @@ convertBtn.addEventListener('click', function(){
         
         `
     }else if(isNaN(inches) || inches<0 && lbs>=0){
-        errorMessage.style.display = 'block';
         content = `
             <div class='div-result'>
                 <p>${Math.ceil(lbs)} lbs = ${Math.ceil(lbs * 0.45359237)} kg. </p>
@@ -68,6 +66,7 @@ convertBtn.addEventListener('click', function(){
         errorMessage.style.display = 'block';
         return;
     }
+    
     storeLbs.push(Math.ceil(lbs * 0.45359237));
     storeInches.push(Math.ceil(inches *2.54));
     
