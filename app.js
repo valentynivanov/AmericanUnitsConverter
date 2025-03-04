@@ -50,7 +50,7 @@ convertBtn.addEventListener('click', function(){
         errorMessage.style.display = 'block';
         content = `
             <div class='div-result'>
-                <p>${lbs} lbs = ${(lbs * 0.45359237).toFixed(2)} kg. </p>
+                <p>${lbs} lbs = ${Math.ceil(lbs * 0.45359237)} kg. </p>
             </div>
         
         `
@@ -58,7 +58,7 @@ convertBtn.addEventListener('click', function(){
         errorMessage.style.display = 'none';
         content = `
             <div class='div-result'>
-                <p>${lbs} lbs = ${(lbs * 0.45359237).toFixed(2)} kg. </p>
+                <p>${lbs} lbs = ${Math.ceil(lbs * 0.45359237)} kg. </p>
                 <p>${inches} inches = ${(inches*2.54).toFixed(2)} cm. </p>
             </div>
         
@@ -67,7 +67,7 @@ convertBtn.addEventListener('click', function(){
         errorMessage.style.display = 'block';
         return;
     }
-    storeLbs.push((lbs * 0.45359237));
+    storeLbs.push(Math.ceil(lbs * 0.45359237));
     storeInches.push((inches *2.54));
     
     console.log(storeLbs)
