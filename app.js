@@ -5,15 +5,13 @@ const calculationDiv = document.getElementById('calculation');
 const calculateBtn = document.getElementById('calculate-btn');
 const finalBtn = document.getElementById('final-btn');
 const finalDiv = document.getElementById('final');
+const resetBtn = document.getElementById('reset-btn');
+const buttonsDiv = document.getElementById('buttons');
+
 let storeLbs = [];
 let storeInches = [];
 let storeTotalWeight = [];
 let storeTotalVolume = [];
-
-
-calculateBtn.style.display = 'none';
-calculationDiv.style.display = 'none';
-finalBtn.style.display = 'none'; 
 
 convertBtn.addEventListener('click', function(){
     // Get the current value from the input which is string because type is text to a number by parseFloat each time the button is clicked
@@ -23,7 +21,6 @@ convertBtn.addEventListener('click', function(){
     const inches = parseFloat(inchesInput);
     
     // Clear all before rendering out 
-    results.innerHTML = '';
     let content = '';
     
     // Check if one of values entered 
@@ -66,7 +63,6 @@ convertBtn.addEventListener('click', function(){
         errorMessage.style.display = 'block';
         return;
     }
-    
     storeLbs.push(Math.ceil(lbs * 0.45359237));
     storeInches.push(Math.ceil(inches *2.54));
     
@@ -78,28 +74,53 @@ convertBtn.addEventListener('click', function(){
     
     console.log(localStorage.getItem('lbs'))
     console.log(localStorage.getItem('inches'))
-
+    
+    results.style.display = 'block';
     results.innerHTML = content;
+    // Reset input value after convertion
+    document.getElementById('lbs').value = '';
+    document.getElementById('inch').value = '';
     
     setTimeout(function(){
-        calculateBtn.style.display = 'block';
+        buttonsDiv.style.display = 'block';
     },1000)
-    
 })
 
+// Reset button 
+resetBtn.addEventListener('click', function(){
+    // Reset input value after convertion
+    document.getElementById('lbs').value = '';
+    document.getElementById('inch').value = '';
+    
+    storeLbs = [];
+    storeInches = [];
+    storeTotalWeight = [];
+    storeTotalVolume = [];
+   
+    localStorage.clear();
+    
+    results.style.display = 'none';
+    finalDiv.style.display = 'none';
+    calculationDiv.style.display = 'none';
+    buttonsDiv.style.display = 'none';
+    finalBtn.style.display = 'none';
+    errorMessage.style.display = 'none';
 
+})
 
 calculateBtn.addEventListener('click', function(){
    
     let calculateContent = '';
     
-    let weights = JSON.parse(localStorage.getItem('lbs'))
-    let volumes = JSON.parse(localStorage.getItem('inches'))
+    let weights = JSON.parse(localStorage.getItem('lbs')) || [];
+    let volumes = JSON.parse(localStorage.getItem('inches')) || [];
     
     if (volumes.length < 3){
         errorMessage.textContent = 'Please enter at least 3 numbers'
         errorMessage.style.display = 'block'
         calculationDiv.innerHTML = '';
+        finalDiv.style.display = 'none';
+        finalBtn.style.display = 'none';
         return;
     }
     
@@ -121,6 +142,7 @@ calculateBtn.addEventListener('click', function(){
     
     console.log(totalWeight)
     console.log(totalVolume)
+    
     let volumeInCbm = totalVolume/1e+6
     
     storeTotalVolume.push(volumeInCbm)
@@ -176,5 +198,7 @@ finalBtn.addEventListener('click', function(){
                 </div>
     `
     
+    finalDiv.style.display = 'block';
     finalDiv.innerHTML = grandContent;
 })
+
