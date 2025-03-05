@@ -48,9 +48,26 @@ h1{
 
 .btn {
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     margin: 10px;
+    color: #6943FF;
+    background-color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.btn:hover, .btn:active, .btn:focus{
+    background-color: #512FCC; /* A slightly darker shade of the main color */
+    color: #FFFFFF;
+    border-color: #512FCC;
+    transform: scale(1.05);
+}
+
+/* Active Button State */
+.btn:active {
+    transform: scale(0.95);
 }
 
 .div-result{
@@ -69,6 +86,17 @@ h1{
     font-weight: bold;
 }
 
-#calculate-btn, #final-btn{
+#final-btn{
     margin: 0 auto;
+}
+
+#buttons{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+}
+
+#final-btn, #final, #calculation, #buttons, #results {
+    display: none;
 }
